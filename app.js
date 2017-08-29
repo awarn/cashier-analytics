@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const workController = require('./controllers/work');
+const saleController = require('./controllers/sale');
 
 /**
  * API keys and Passport configuration.
@@ -138,6 +139,11 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/work', workController.index);
 app.get('/work/history', workController.history);
+
+/**
+ * POS endpoint routes
+ */
+app.post('/sale', saleController.postSale);
 
 /**
  * API examples routes.
