@@ -1,6 +1,7 @@
 {
+	"parser": "babel-eslint",
 	"rules": {
-		"semi": ["error", "always"],
+    "strict": 0,
 		"quotes": ["error", "double"],
 		"no-restricted-imports": ["error", "import1", "import2"]
 	}

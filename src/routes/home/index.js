@@ -1,7 +1,7 @@
 
 import React from "react"
 
-export default class Work extends React.Component {
+export default class Home extends React.Component {
 	constructor() {
 		super()
 	}
@@ -9,7 +9,7 @@ export default class Work extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Work</h1>
+				<h1>Home</h1>
 			</div>
 		)
 	}
