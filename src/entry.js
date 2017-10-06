@@ -10,11 +10,5 @@ ReactDOM.render((
 ), document.getElementById("root"))
 
 if(process.env.NODE_ENV === "development" && module.hot) {
-	module.hot.accept("./components/App", () => {
-		ReactDOM.render((
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		), document.getElementById("root"));
-	})
+	module.hot.accept()
 }
