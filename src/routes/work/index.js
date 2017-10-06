@@ -8,8 +8,10 @@ export default class Work extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Work</h1>
+			<div className="container">
+				<div className="col-sm-6">
+					<h1>Work</h1>
+				</div>
 			</div>
 		)
 	}
