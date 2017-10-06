@@ -14,8 +14,7 @@
     "build": "rimraf dist && webpack --config ./webpack.config.js",
     "lint": "eslint ./src",
     "test": "mocha --reporter spec",
-    "postinstall": "npm rebuild node-sass",
-    "eslint": "eslint **/*.js"
+    "postinstall": "npm rebuild node-sass"
   },
   "dependencies": {
     "babel-cli": "6.26.0",
@@ -41,6 +40,7 @@
     "express-session": "^1.15.5",
     "express-status-monitor": "^1.0.0",
     "express-validator": "^3.2.1",
+    "extract-text-webpack-plugin": "3.0.1",
     "fbgraph": "^1.4.1",
     "github": "^9.2.0",
     "graphql": "0.11.3",

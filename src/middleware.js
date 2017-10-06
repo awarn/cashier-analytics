@@ -3,11 +3,11 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
 /* import { Provider } from "react-redux";
 import { createStore } from "redux"; */
-import App from "./components/app";
 // import reducers from "./reducers";
 
 export default (req, res) => {
 	if(process.env.NODE_ENV === "production") {
+		const App = require("./components/App").default
 		res.send(`
 			<!doctype html>
 			<html>

@@ -1,6 +1,8 @@
-const path = require("path");
-const webpack = require("webpack");
-//const autoprefixer = require("autoprefixer");
+const path = require("path")
+const webpack = require("webpack")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+
+let cssModulesLoader = "css-loader?importLoader=1&modules&localIdentName=[name]__[local]___[hash:base64:5]"
 
 module.exports = {
   devtool: false,
@@ -28,12 +30,13 @@ module.exports = {
 				NODE_ENV: JSON.stringify("production"),
 				WEBPACK: true
 			}
-		})
+    }),
+    new ExtractTextPlugin("bundle.css")
 	],
   module: {
 		rules: [
       {
-        test: /\.js$/,
+        test: /\.js(x)*$/,
         use: [
           {
             loader: "babel-loader",
@@ -50,7 +53,28 @@ module.exports = {
             },
           }
         ],
-        include: __dirname + "/src",
+        include: path.resolve(__dirname, "src"),
+      },
+      {
+        test: /\.(s)*css$/,
+        use: ExtractTextPlugin.extract({
+					fallback: "style-loader",
+					use: [
+						cssModulesLoader,
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: function() {
+                  return [
+                    require("autoprefixer")
+                  ];
+                }
+              }
+            },
+            "sass-loader"
+					],
+				}),
+        include: path.resolve(__dirname, "src")
       }
     ]
 	}

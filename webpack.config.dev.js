@@ -1,6 +1,5 @@
-import * as path from "path";
-import * as webpack from "webpack";
-//const autoprefixer = require("autoprefixer");
+import * as path from "path"
+import * as webpack from "webpack"
 
 let cssModulesLoader = "css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]"
 
@@ -37,7 +36,7 @@ module.exports = {
   module: {
 		rules: [
       {
-        test: /\.js$/,
+        test: /\.js(x)*$/,
         use: [
           {
             loader: "babel-loader",
@@ -54,19 +53,26 @@ module.exports = {
             },
           }
         ],
-        include: __dirname + "/src",
+        include: path.resolve(__dirname, "src"),
       },
       {
-        test: /\.scss/,
+        test: /\.(s)*css$/,
         use: [
           "style-loader",
           cssModulesLoader,
-          "postcss-loader",
+          {
+						loader: "postcss-loader",
+						options: {
+							plugins: function() {
+                return [
+                  require("autoprefixer")
+                ];
+              }
+						}
+					},
           "sass-loader"
         ],
-        include: [
-          path.resolve(__dirname, "src/")
-        ]
+        include: path.resolve(__dirname, "src")
       }
     ]
 	}
